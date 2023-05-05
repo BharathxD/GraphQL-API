@@ -5,7 +5,7 @@ import {
 } from "apollo-server-core";
 import { Express } from "express";
 import { buildSchema } from "type-graphql";
-
+import { resolvers } from "./resolvers";
 
 const apolloServer = async (app: Express) => {
     const schema = await buildSchema({
@@ -15,7 +15,6 @@ const apolloServer = async (app: Express) => {
     const server: ApolloServer = new ApolloServer({
         schema,
         context: (ctx) => {
-            console.log(ctx);
             return ctx;
         },
         plugins: [

@@ -1,7 +1,8 @@
 import { Query } from "type-graphql";
+import { User } from "../schema/user.schema";
 
 export default class UserResolver {
-    @Query()
+    @Query(() => User)
     me() {
         return {
             _id: "123",
