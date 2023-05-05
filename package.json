@@ -13,6 +13,8 @@
   "dependencies": {
     "@typegoose/typegoose": "^11.1.0",
     "apollo-server": "^3.12.0",
+    "argon": "^2.0.21",
+    "argon2": "^0.30.3",
     "bcrypt": "^5.1.0",
     "class-validator": "^0.14.0",
     "config": "^3.3.9",

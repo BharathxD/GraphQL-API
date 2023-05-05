@@ -1,3 +1,3 @@
 export default {
-    dbUri: process.env.DB_URI,
-}
+  dbUri: process.env.DB_URI,
+};
