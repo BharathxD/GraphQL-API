@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import logger from "./logger";
 
 const certsDir = path.join(__dirname, "..", "..", "certs");
 
@@ -10,6 +11,7 @@ try {
     publicKey = fs.readFileSync(path.join(certsDir, "public_key.pem"))
     privateKey = fs.readFileSync(path.join(certsDir, "private_key.pem"));
 } catch (error: any) {
+    logger.error(`Failed to read the certification files: ${error}}`)
     process.exit(1);
 }
 
