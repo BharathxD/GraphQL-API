@@ -4,6 +4,7 @@ import routes from "./routes";
 import logger from "./utils/logger";
 import configureApp from "./config/configureApp";
 import apolloServer from "./apollo/server";
+import connect from "./utils/connect";
 
 
 const bootstrapServer = async () => {
@@ -18,6 +19,7 @@ const bootstrapServer = async () => {
 
     const expressServer = app.listen(PORT, async () => {
         logger.info(`The server is running at http://localhost:${PORT}}`);
+        await connect();
         routes(app);
     })
 }
