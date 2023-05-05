@@ -1,10 +1,10 @@
-import express from "express";
 import dotenv from "dotenv";
+import express from "express";
 import logger from "./utils/logger";
-import configureApp from "./config/configureApp";
+import configureApplicationMiddleware from "./middleware/configureApp";
+import startApolloServer from "./apollo/server";
 import connect from "./utils/connect";
 import routes from "./routes";
-import startApolloServer from "./apollo/server";
 
 const bootstrapServer = async (): Promise<void> => {
   try {
@@ -12,7 +12,7 @@ const bootstrapServer = async (): Promise<void> => {
     const app = express();
     const PORT = process.env.PORT || 4000;
 
-    configureApp(app);
+    configureApplicationMiddleware(app);
     await startApolloServer(app);
 
     const server = app.listen(PORT, async () => {
