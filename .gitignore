@@ -132,6 +132,5 @@ dist
 .env
 .DS_Store
 
-certs/*
+certs
 .pem
-*.pem
