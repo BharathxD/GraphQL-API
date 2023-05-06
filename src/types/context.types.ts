@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import { User } from "../schema/user.schema";
 
 interface Context {
-    request: Request,
-    response: Response,
+    req: Request,
+    res: Response,
     user: User
 }
 

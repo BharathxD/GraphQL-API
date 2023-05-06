@@ -3,7 +3,7 @@ import express from "express";
 import logger from "./utils/logger.util";
 import configureApplicationMiddleware from "./middleware/configureApp";
 import startApolloServer from "./api/apollo/server";
-import connect from "./utils/database";
+import connect from "./utils/database.util";
 import routes from "./api/routes";
 
 const bootstrapServer = async (): Promise<void> => {

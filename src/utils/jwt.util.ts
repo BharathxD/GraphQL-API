@@ -4,7 +4,7 @@ import jwt, {
 } from "jsonwebtoken";
 import { publicKey, privateKey } from "./pemToString.util";
 
-type JwtPayload = string | Buffer | object;
+type JwtPayload = String | Buffer | Object;
 
 export default class JwtService {
     private readonly publicKey: string;

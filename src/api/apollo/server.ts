@@ -30,7 +30,7 @@ const apolloServer = async (app: Express): Promise<void> => {
 
     logger.info("Apollo Server started successfully ✅");
   } catch (error) {
-    logger.error(`Failed to start Apollo Server ❌:, ${error}`);
+    logger.error(`Failed to start Apollo Server ❌: ${error}`);
     process.exit(1);
   }
 };

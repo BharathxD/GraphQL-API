@@ -30,10 +30,6 @@ export class User {
   @Field(() => String)
   @Prop({ required: true, type: String })
   name: string;
-  //? Username
-  @Field(() => String)
-  @Prop({ type: String })
-  username: string;
   //? Email
   @Field(() => String)
   @Prop({ required: true, type: String })
@@ -64,6 +60,7 @@ export class CreateUserInput {
 
 @InputType()
 export class LoginInput {
+  @IsEmail()
   @Field(() => String)
   email: string;
   @Field(() => String)
