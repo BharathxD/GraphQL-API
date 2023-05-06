@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import logger from "./logger";
+import logger from "./logger.util";
 
 const certsDir = path.join(__dirname, "..", "..", "certs");
 

@@ -6,7 +6,7 @@ import {
 import { buildSchema } from "type-graphql";
 import { Express } from "express";
 import { resolvers } from "./resolvers";
-import logger from "../../utils/logger";
+import logger from "../../utils/logger.util";
 
 const apolloServer = async (app: Express): Promise<void> => {
   try {

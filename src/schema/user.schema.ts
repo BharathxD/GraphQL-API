@@ -1,7 +1,16 @@
-import { Prop, getModelForClass, pre } from "@typegoose/typegoose";
+import { Prop, getModelForClass, index, pre, queryMethod } from "@typegoose/typegoose";
 import { IsEmail, MaxLength, MinLength } from "class-validator";
 import { Field, InputType, ObjectType } from "type-graphql";
 import argon2 from "argon2";
+import { AsQueryMethod, ReturnModelType } from "@typegoose/typegoose/lib/types";
+
+function findByEmail(this: ReturnModelType<typeof User, QueryHelpers>, email: User["email"]) {
+  return this.findOne({ email });
+}
+
+interface QueryHelpers {
+  findByEmail: AsQueryMethod<typeof findByEmail>
+}
 
 @pre<User>("save", async function (this, next) {
   if (this.isModified("password")) {
@@ -10,6 +19,9 @@ import argon2 from "argon2";
   }
   return next();
 })
+
+@index({ email: 1 })
+@queryMethod(findByEmail)
 @ObjectType()
 export class User {
   @Field(() => String)
@@ -35,7 +47,7 @@ export class User {
   }
 }
 
-export const UserModel = getModelForClass(User);
+export const UserModel = getModelForClass<typeof User, QueryHelpers>(User);
 
 @InputType()
 export class CreateUserInput {
@@ -48,4 +60,12 @@ export class CreateUserInput {
   @MinLength(6, { message: "Password must be atleast 6 characters long" })
   @MaxLength(50, { message: "Password must not be longer than 50 characters" })
   password: string;
+}
+
+@InputType()
+export class LoginInput {
+  @Field(() => String)
+  email: string;
+  @Field(() => String)
+  password: string
 }
