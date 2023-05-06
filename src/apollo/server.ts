@@ -15,7 +15,7 @@ const apolloServer = async (app: Express): Promise<void> => {
     const schema = await buildSchema({
       resolvers,
       // TODO: Add authChecker here if needed
-      authChecker
+      authChecker,
     });
 
     const server = new ApolloServer({

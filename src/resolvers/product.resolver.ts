@@ -10,7 +10,10 @@ export default class ProductResolver {
     }
     @Authorized()
     @Mutation(() => Product)
-    async CreateProduct(@Arg("input") input: CreateProductInput, @Ctx() context: Context) {
+    async createProduct(
+        @Arg("input") input: CreateProductInput,
+        @Ctx() context: Context
+    ) {
         const user = context.user!;
         return this.productService.createProduct({ ...input, user: user._id });
     }

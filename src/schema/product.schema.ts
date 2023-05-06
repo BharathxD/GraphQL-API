@@ -8,22 +8,26 @@ import { IsNumber, MaxLength, Min, MinLength } from "class-validator";
 @Index({ product: 1 })
 export default class Product {
     @Field(() => String)
-    _id: string
+    _id: string;
     @Field(() => User)
     @Prop({ require: true, ref: () => User })
-    user: Ref<User>
+    user: Ref<User>;
     @Field()
     @Prop({ required: true })
-    name: string
+    name: string;
     @Field()
     @Prop({ required: true })
-    description: string
+    description: string;
     @Field()
     @Prop({ required: true })
-    price: number
+    price: number;
     @Field()
-    @Prop({ required: true, default: () => `product_${randomUUID()}`, unique: true })
-    productId: string
+    @Prop({
+        required: true,
+        default: () => `product_${randomUUID()}`,
+        unique: true,
+    })
+    productId: string;
 }
 
 export const ProductModel = getModelForClass<typeof Product>(Product);
@@ -31,21 +35,21 @@ export const ProductModel = getModelForClass<typeof Product>(Product);
 @InputType()
 export class CreateProductInput {
     @Field()
-    name: string
+    name: string;
     @Field()
     @MinLength(50, { message: "The description must be 60 characters long" })
     @MaxLength(150, {
-        message: "The description must not exceed 150 characters length"
+        message: "The description must not exceed 150 characters length",
     })
-    description: string
+    description: string;
     @Field()
     @IsNumber()
     @Min(1)
-    price: number
+    price: number;
 }
 
 @InputType()
 export class GetProductInput {
     @Field()
-    productId: string
+    productId: string;
 }

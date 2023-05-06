@@ -11,7 +11,6 @@ const bootstrapServer = async (): Promise<void> => {
     dotenv.config();
     const app = express();
     const PORT = process.env.PORT || 4000;
-
     configureApplicationMiddleware(app);
     await startApolloServer(app);
 
