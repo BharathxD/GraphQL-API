@@ -1,8 +1,8 @@
-import { CreateProductInput, GetProductInput, ProductModel } from "../schema/product.service";
+import { CreateProductInput, GetProductInput, ProductModel } from "../schema/product.schema";
 import { User } from "../schema/user.schema";
 
 export default class ProductService {
-    async createUser(input: CreateProductInput & { user: User["_id"] }) {
+    async createProduct(input: CreateProductInput & { user: User["_id"] }) {
         return ProductModel.create(input);
     }
     async findProducts() {

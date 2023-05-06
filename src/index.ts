@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import logger from "./utils/logger.util";
 import configureApplicationMiddleware from "./middleware/configureApp";
-import startApolloServer from "./api/apollo/server";
+import startApolloServer from "./apollo/server";
 import connect from "./utils/database.util";
 import routes from "./api/routes";
 

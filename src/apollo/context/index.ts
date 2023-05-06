@@ -1,5 +1,5 @@
-import Context from "../../../types/context.types";
-import JwtService from "../../../utils/jwt.util";
+import Context from "../../types/context.types";
+import JwtService from "../../utils/jwt.util";
 
 /**
  * This function extracts the access token from the request headers or cookies, verifies it using a JWT service, and adds the user information to the context object.

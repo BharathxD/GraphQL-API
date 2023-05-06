@@ -5,15 +5,17 @@ import {
 } from "apollo-server-core";
 import { buildSchema } from "type-graphql";
 import { Express } from "express";
-import { resolvers } from "./resolvers";
-import logger from "../../utils/logger.util";
+import { resolvers } from "../resolvers";
+import logger from "../utils/logger.util";
 import context from "./context";
+import authChecker from "../utils/authChecker.util";
 
 const apolloServer = async (app: Express): Promise<void> => {
   try {
     const schema = await buildSchema({
       resolvers,
       // TODO: Add authChecker here if needed
+      authChecker
     });
 
     const server = new ApolloServer({
