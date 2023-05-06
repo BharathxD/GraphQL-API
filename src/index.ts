@@ -21,7 +21,6 @@ const bootstrapServer = async (): Promise<void> => {
     });
   } catch (error: any) {
     logger.error(`Error starting server: ${error.message}`);
-    process.exit(1);
   }
 };
 

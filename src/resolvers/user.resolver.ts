@@ -18,7 +18,7 @@ export default class UserResolver {
     return this.userService.validateUser(input, context);
   }
 
-  @Query(() => User)
+  @Query(() => User, { nullable: true })
   me(@Ctx() context: Context) {
     return context.user;
   }

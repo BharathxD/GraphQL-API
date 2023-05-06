@@ -68,6 +68,7 @@ export class CreateUserInput {
 
 @InputType()
 export class LoginInput {
+  //? Include this decorator, else the server will throw Argument Validation Error
   @IsEmail()
   @Field(() => String)
   email: string;
