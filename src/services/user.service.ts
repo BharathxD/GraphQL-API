@@ -1,10 +1,10 @@
 import { ApolloError } from "apollo-server";
-import { LoginInput, UserModel } from "../schema/user.schema";
+import { CreateUserInput, LoginInput, UserModel } from "../schema/user.schema";
 import Context from "../types/context.types";
 import JwtService from "../utils/jwt.util";
 
 export default class UserService {
-  async createUser(input: any) {
+  async createUser(input: CreateUserInput) {
     try {
       return UserModel.create(input);
     } catch (error: any) {

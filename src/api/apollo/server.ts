@@ -7,8 +7,6 @@ import { buildSchema } from "type-graphql";
 import { Express } from "express";
 import { resolvers } from "./resolvers";
 import logger from "../../utils/logger.util";
-import Context from "../../types/context.types";
-import JwtService from "../../utils/jwt.util";
 import context from "./context";
 
 const apolloServer = async (app: Express): Promise<void> => {
