@@ -32,7 +32,7 @@ export class User {
   name: string;
   //? Email
   @Field(() => String)
-  @Prop({ required: true, type: String })
+  @Prop({ required: true, unique: true, type: String })
   email: string;
   //? Password
   @Prop({ required: true, type: String })
