@@ -1,6 +1,6 @@
 import { Arg, Mutation, Query } from "type-graphql";
-import { CreateUserInput, User } from "../../schema/user.schema";
-import UserService from "../../service/user.service";
+import { CreateUserInput, User } from "../../../schema/user.schema";
+import UserService from "../../../service/user.service";
 
 export default class UserResolver {
   constructor(private userService: UserService) {

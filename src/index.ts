@@ -2,9 +2,9 @@ import dotenv from "dotenv";
 import express from "express";
 import logger from "./utils/logger";
 import configureApplicationMiddleware from "./middleware/configureApp";
-import startApolloServer from "./apollo/server";
-import connect from "./utils/connect";
-import routes from "./routes";
+import startApolloServer from "./api/apollo/server";
+import connect from "./utils/database";
+import routes from "./api/routes";
 
 const bootstrapServer = async (): Promise<void> => {
   try {
