@@ -7,6 +7,9 @@ import { buildSchema } from "type-graphql";
 import { Express } from "express";
 import { resolvers } from "./resolvers";
 import logger from "../../utils/logger.util";
+import Context from "../../types/context.types";
+import JwtService from "../../utils/jwt.util";
+import context from "./context";
 
 const apolloServer = async (app: Express): Promise<void> => {
   try {
@@ -17,7 +20,7 @@ const apolloServer = async (app: Express): Promise<void> => {
 
     const server = new ApolloServer({
       schema,
-      context: (ctx) => ctx,
+      context,
       plugins: [
         process.env.NODE_ENV === "production"
           ? ApolloServerPluginLandingPageProductionDefault()

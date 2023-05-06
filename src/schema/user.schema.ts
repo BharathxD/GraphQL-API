@@ -1,15 +1,24 @@
-import { Prop, getModelForClass, index, pre, queryMethod } from "@typegoose/typegoose";
+import {
+  Prop,
+  getModelForClass,
+  index,
+  pre,
+  queryMethod,
+} from "@typegoose/typegoose";
 import { IsEmail, MaxLength, MinLength } from "class-validator";
 import { Field, InputType, ObjectType } from "type-graphql";
 import argon2 from "argon2";
 import { AsQueryMethod, ReturnModelType } from "@typegoose/typegoose/lib/types";
 
-function findByEmail(this: ReturnModelType<typeof User, QueryHelpers>, email: User["email"]) {
+function findByEmail(
+  this: ReturnModelType<typeof User, QueryHelpers>,
+  email: User["email"]
+) {
   return this.findOne({ email });
 }
 
 interface QueryHelpers {
-  findByEmail: AsQueryMethod<typeof findByEmail>
+  findByEmail: AsQueryMethod<typeof findByEmail>;
 }
 
 @pre<User>("save", async function (this, next) {
@@ -19,7 +28,6 @@ interface QueryHelpers {
   }
   return next();
 })
-
 @index({ email: 1 })
 @queryMethod(findByEmail)
 @ObjectType()
@@ -64,5 +72,5 @@ export class LoginInput {
   @Field(() => String)
   email: string;
   @Field(() => String)
-  password: string
+  password: string;
 }

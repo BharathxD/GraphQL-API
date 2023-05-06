@@ -30,16 +30,16 @@ export default class UserService {
       throw new ApolloError(validationError);
     }
     //? Generate JWT Token
-    const jwt = new JwtService();
-    const token = jwt.generateToken(user.toObject());
+    const jwtService = new JwtService();
+    const token = jwtService.generateToken(user.toObject());
     context.res.cookie("accessToken", {
       maxAge: 3.154e10,
       httpOnly: true,
       domain: "localhost",
       path: "/",
       sameSite: "strict",
-      secure: process.env.NODE_ENV === "production"
-    })
+      secure: process.env.NODE_ENV === "production",
+    });
     return token;
   }
 }
