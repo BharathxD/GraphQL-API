@@ -16,7 +16,7 @@ const bootstrapServer = async (): Promise<void> => {
     await startApolloServer(app);
 
     const server = app.listen(PORT, async () => {
-      logger.info(`Server running on http://localhost:${PORT}`);
+      logger.info(`Server running on http://localhost:${PORT} 👾`);
       await connect();
       routes(app);
     });

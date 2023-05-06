@@ -1,10 +1,8 @@
-import { Express, Request, Response, NextFunction } from "express";
+import { Express } from "express";
+import healthCheckHandler from "../middleware/healthcheck";
 
 const routes = (app: Express) => {
-  app.get("/", (_: Request, res: Response, next: NextFunction) => {
-    res.status(200).send({ message: "Server is up and running" });
-    next();
-  });
+  app.get("/", healthCheckHandler);
 };
 
 export default routes;
