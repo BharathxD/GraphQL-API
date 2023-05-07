@@ -19,7 +19,7 @@ export default class UserResolver {
   }
 
   @Query(() => User, { nullable: true })
-  me(@Ctx() context: Context) {
+  user(@Ctx() context: Context) {
     return context.user;
   }
 }

@@ -1,10 +1,18 @@
 # GraphQL API
 
+![project-image](./project-media/Project-1.png)
+
+## GraphQL Queries
+
+Click [here](./GraphQL.md) to view all the queries to test the application
+
 ## Bootstrap Server
 
 Run the following commands
 
 ```bash
+    mkdir gql-api
+    cd gql-api
     echo "node_modules\n.DS_Store\n.env" > .gitignore
     git init
     npm init -y
