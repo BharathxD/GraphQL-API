@@ -5,7 +5,9 @@ import configureApplicationMiddleware from "./middleware/configureApp";
 import startApolloServer from "./apollo/server";
 import connect from "./utils/database.util";
 import routes from "./api/routes";
+import Database from "./utils/database.util";
 
+/*** This function starts a server using Express and Apollo Server, and connects to a database. */
 const bootstrapServer = async (): Promise<void> => {
   try {
     dotenv.config();
@@ -16,7 +18,7 @@ const bootstrapServer = async (): Promise<void> => {
 
     const server = app.listen(PORT, async () => {
       logger.info(`Server running on http://localhost:${PORT} 👾`);
-      await connect();
+      await new Database().connect();
       routes(app);
     });
   } catch (error: any) {

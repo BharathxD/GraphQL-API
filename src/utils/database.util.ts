@@ -1,21 +1,25 @@
-import mongoose from "mongoose";
-import logger from "./logger.util";
+import mongoose from 'mongoose';
+import logger from './logger.util';
 
-const connect = async () => {
-  const mongoUrl = process.env.DB_URI;
-  mongoose.set({
-    strictQuery: false,
-  });
-  try {
-    if (!mongoUrl) {
-      throw new Error("Provided Invalid MongoDB URL");
+export default class Database {
+  private mongoUrl: string;
+
+  constructor(mongoUrl?: string) {
+    if (!process.env.DB_URI) {
+      throw new Error('MongoDB URI is not provided');
     }
-    await mongoose.connect(mongoUrl);
-    logger.info("Successfuly connected to the MongoDB Atlas ✅");
-  } catch (error: any) {
-    logger.error(`Something went wrong ❌: ${error.message}`);
-    process.exit(1);
+    this.mongoUrl = mongoUrl ?? process.env.DB_URI;
+    mongoose.set('strictQuery', false);
   }
-};
 
-export default connect;
+  public async connect(): Promise<void> {
+    try {
+      await mongoose.connect(this.mongoUrl);
+      logger.info('Successfully connected to MongoDB Atlas ✅');
+    } catch (error: any) {
+      logger.error(`Error connecting to MongoDB Atlas ❌: ${error.message}`);
+      process.exit(1);
+    }
+  }
+}
+
