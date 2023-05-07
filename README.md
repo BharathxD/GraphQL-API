@@ -4,7 +4,16 @@
 
 ## GraphQL Queries
 
-Click [here](./GraphQL.md) to view all the queries to test the application
+To test the application, please click on the following link to view all the queries.
+
+| Queries                 | Link                                           |
+| ----------------------- | ---------------------------------------------- |
+| Create User Mutation    | [`Link`](./GraphQL.md#create-user-mutation)    |
+| Login User Mutation     | [`Link`](./GraphQL.md#login-user-mutation)     |
+| Get User Query          | [`Link`](./GraphQL.md#get-user-query)          |
+| Create Product Mutation | [`Link`](./GraphQL.md#create-product-mutation) |
+| Get Product Query       | [`Link`](./GraphQL.md#get-product-query)       |
+| Get Products Query      | [`Link`](./GraphQL.md#get-products-query)      |
 
 ## Bootstrap Server
 
